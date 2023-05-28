@@ -13,13 +13,13 @@
 
 using namespace std;
 
-class BolachaRecheada : public Bolacha
+class FilledWafer : public Cracker
    {
    private:
       string recheio;
       
    public:
-      BolachaRecheada(string, string, int, double);
+      FilledWafer(string, string, int, double);
       virtual string getDescricao();
    };
    

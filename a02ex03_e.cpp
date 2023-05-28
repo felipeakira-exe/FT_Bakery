@@ -11,14 +11,14 @@
 
 using namespace std;
 
-BolachaRecheada::BolachaRecheada(string tipo, string recheio, int unidades, double valor) : Bolacha(tipo, unidades, valor)
+FilledWafer::FilledWafer(string tipo, string recheio, int unidades, double valor) : Cracker(tipo, unidades, valor)
    {
    this->recheio = recheio;
    };
    
-string BolachaRecheada::getDescricao()
+string FilledWafer::getDescricao()
    { 
-   return ("Bolacha Recheada com " + recheio + " - " + Bolacha::getDescricao()); 
+   return ("Bolacha Recheada com " + recheio + " - " + Cracker::getDescricao()); 
    };
    
 /* fim de arquivo */

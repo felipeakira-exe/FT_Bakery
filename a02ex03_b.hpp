@@ -12,13 +12,13 @@
 
 using namespace std;
 
-class Comida
+class Food
    {
    protected:
       double valor;
       
    public:
-      Comida(double);
+      Food(double);
       virtual double getValor();
 
       virtual string getDescricao() = 0;

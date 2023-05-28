@@ -13,14 +13,14 @@
 
 using namespace std;
 
-class Pao : public Comida
+class Bread : public Food
    {
    private:
       string tipo;
       float peso;
       
    public:
-      Pao(string, float, double);
+      Bread(string, float, double);
       virtual string getDescricao();
    };
    

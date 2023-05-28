@@ -13,14 +13,14 @@
 
 using namespace std;
 
-class Bolacha : public Comida
+class Cracker : public Food
    {
    private:
       string tipo;
       int    unidades;
       
    public:
-      Bolacha(string, int, double);
+      Cracker(string, int, double);
       virtual string getDescricao();
    };
    

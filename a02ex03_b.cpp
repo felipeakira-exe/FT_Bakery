@@ -10,12 +10,12 @@
 
 using namespace std;
 
-Comida::Comida(double valor)
+Food::Food(double valor)
    {
    this->valor = valor;
    };
    
-double Comida::getValor()
+double Food::getValor()
    { 
    return (valor); 
    };
