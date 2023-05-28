@@ -18,6 +18,7 @@ using namespace std;
    void insertItems(void);
    void insertBread(void);
    void insertCheese(void);
+   void insertCottageCheese(void);
    void insertCracker(void);
    void insertFilledWafer(void);
    

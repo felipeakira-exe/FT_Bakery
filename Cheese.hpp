@@ -7,12 +7,12 @@
 using namespace std;
 
 class Cheese : public Food {
-    private:
-        string tipo;
+    protected:
+        float gordura;
         float peso;
 
     public:
-        Cheese(string, float, double);
+        Cheese(float, float, double);
         virtual string getDescricao();
 };
 
