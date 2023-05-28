@@ -18,6 +18,7 @@
 #include "a02ex03_c.hpp"
 #include "a02ex03_d.hpp"
 #include "a02ex03_e.hpp"
+#include "Cheese.hpp"
 
 /* DANGER: A LOT OF GLOBAL VARIABLES !!! (OBJECTS & STRUCTURES) */
 
@@ -149,7 +150,7 @@ void insertItems() {
          switch(escolha)
          {
             case 1: { insertBread();       }; break;
-            case 2: {                      }; break;
+            case 2: { insertCheese();      }; break;
             case 3: {                      }; break;
             case 4: { insertCracker();     }; break;
             case 5: { insertFilledWafer(); }; break;
@@ -177,7 +178,26 @@ void insertBread(){
    
    cout << endl << bread->getDescricao() << " - US$ " << fixed << setprecision(2) << bread->getValor() << endl;   
 };
+
+void insertCheese() {
+   Cheese * cheese;
+   string buffer;
+   string type;
+   float weight;
+   double cost;
+
+   cout << "------------------------------\nInsert Cheese:\n------------------------------\n";
+   cout << "Type ......: "; getline(cin, buffer); type   = buffer;
+   cout << "Weight ....: "; getline(cin, buffer); weight = stof(buffer);
+   cout << "Cost ......: "; getline(cin, buffer); cost   = stod(buffer);
+   cin.clear();
    
+   cheese = new Cheese(type, weight, cost);
+   myMainList.insert(myMainList.end(), cheese);
+
+   cout << endl << cheese->getDescricao() << " - US$ " << fixed << setprecision(2) << cheese->getValor() << endl;
+};
+
 void insertCracker() {
    Cracker * cracker;
    string buffer;
