@@ -26,33 +26,83 @@ MyBooleanClass * shortMessageMode  = NULL;
 
 vector<Comida *> myMainList;
    
-int main(int argc, char* argv[])
-   {
+int main(int argc, char* argv[]) {
    verifyArguments(argc, argv);
-   myMainList.clear();
-   Information::wellcome("C++ Program " + string(argv[0]) + " running!", shortMessageMode->getStatus());
-   process();
-   Information::bye(shortMessageMode->getStatus());
-   clearAll();
-   };
+   // -v = verboseMode = true
+   // -s = shortMessageMode = true
 
-void process()
-   {
+   myMainList.clear(); 
+   // Apaga todos os elementos do vetor de ponteiros da classe Comida myMainList
+   
+   Information::wellcome("C++ Program " + string(argv[0]) + " running!", shortMessageMode->getStatus());
+   // -s = não imprime as informações Instituicao, autor, etc.
+   
+   process();
+   
+   Information::bye(shortMessageMode->getStatus());
+   // -s = nao imprime as informações Instituicao, autor, etc.
+   clearAll();
+};
+
+void process() {
    vector<string> opcoes({ "Exit", "List Database", "Insert Items" });
    Menu menu("Main Menu", opcoes);
+   // titulo = "Main Menu"
+   // opcoes = vetor de string opcoes
+
    int escolha = -1;
    
-   while(escolha)
-      {
+   while(escolha) {
       escolha = menu.getEscolha();
- 
+      /*
+         menu.getEscolha()
+         Imprime
+            ------------------------------
+            Main Menu
+            ------------------------------
+            0. Exit
+            1. List Database
+            2. Insert Items
+            ------------------------------
+            Escolha entre 0 e 2
+            ------------------------------
+         e lê o próximo valor
+      */
+
       switch(escolha)
          {
- 	 case 1: { listItems();    }; break;
- 	 case 2: { insertItems();  }; break;
+            case 1: { listItems();   }; break;
+               /*
+                  Imprime
+                     ------------------------------
+                     Items in Database
+                     ------------------------------
+                  Percorre todo o vector de Comida
+                  e imprime os valores
+               */ 
+
+            case 2: { insertItems(); }; break;
+               /*
+                  Imprime
+                  ------------------------------
+                  Insert New Items:
+                  ------------------------------
+                  0. Exit
+                  1. Bread
+                  2. Cheese
+                  3. Cottage Cheese
+                  4. Cracker
+                  5. Filled Wafer
+                  6. Ham
+                  7. Mortadella
+                  ------------------------------
+                  Escolha entre 0 e 7
+                  ------------------------------
+               */
+            
          };
-      };
    };
+};
 
 void clearAll()   // está errada ! corrigir !!!!
    {
@@ -73,24 +123,21 @@ void clearAll()   // está errada ! corrigir !!!!
    shortMessageMode = NULL;
    };
 
-void listItems()
-   {
+void listItems() {
    double total = 0.00;
       
    cout << "------------------------------\nItems in Database:\n------------------------------\n";
    vector<Comida *>::iterator scan = myMainList.begin();
    
-   while(scan != myMainList.end())
-      {
+   while(scan != myMainList.end()) {
       cout << "  @ " << setw(20) << (*scan)->getDescricao() << "\n\tUS$ " << fixed << setprecision(2) << (*scan)->getValor() << endl;
       total +=  (*scan)->getValor();
       scan++;
-      };
-   cout << "  Total cost: US$ " << fixed << setprecision(2) << total << endl;
    };
+   cout << "  Total cost: US$ " << fixed << setprecision(2) << total << endl;
+};
 
-void insertItems()
-   {
+void insertItems() {
    cout << "------------------------------\nInset New Items:\n------------------------------\n";
   
    Menu menu("Insert Items", { "Exit", "Bread", "Cheese", "Cottage Cheese", "Cracker", "Filled Wafer", "Ham", "Mortadella" });
@@ -98,23 +145,21 @@ void insertItems()
    
    while(escolha)
       {
-      escolha = menu.getEscolha();
- 
-      switch(escolha)
+         escolha = menu.getEscolha();
+         switch(escolha)
          {
- 	 case 1: { insertBread();       }; break;
- 	 case 2: {                      }; break;
- 	 case 3: {                      }; break;
- 	 case 4: { insertCracker();     }; break;
- 	 case 5: { insertFilledWafer(); }; break;
- 	 case 6: {                      }; break;
- 	 case 7: {                      }; break;
+            case 1: { insertBread();       }; break;
+            case 2: {                      }; break;
+            case 3: {                      }; break;
+            case 4: { insertCracker();     }; break;
+            case 5: { insertFilledWafer(); }; break;
+            case 6: {                      }; break;
+            case 7: {                      }; break;
          };
       };
-   };
+};
 
-void insertBread()
-   {
+void insertBread(){
    Pao * bread;
    string buffer;
    string type;
@@ -131,10 +176,9 @@ void insertBread()
    myMainList.insert(myMainList.end(), bread);
    
    cout << endl << bread->getDescricao() << " - US$ " << fixed << setprecision(2) << bread->getValor() << endl;   
-   };
+};
    
-void insertCracker()
-   {
+void insertCracker() {
    Bolacha * cracker;
    string buffer;
    string type;
@@ -151,10 +195,9 @@ void insertCracker()
    myMainList.insert(myMainList.end(), cracker);
    
    cout << endl << cracker->getDescricao() << " - US$ " << fixed << setprecision(2) << cracker->getValor() << endl;   
-   };
+};
 
-void insertFilledWafer()
-   {
+void insertFilledWafer() {
    BolachaRecheada * filledWafer;
    string buffer;
    string type;
@@ -173,24 +216,36 @@ void insertFilledWafer()
    myMainList.insert(myMainList.end(), filledWafer);
    
    cout << endl << filledWafer->getDescricao() << " - US$ " << fixed << setprecision(2) << filledWafer->getValor() << endl;   
-   };
+};
   
-void verifyArguments(int argc, char* argv[])
-   {
-   if(verboseMode)                     { delete verboseMode;         }; 
-   if(shortMessageMode)                { delete shortMessageMode;    };  
+void verifyArguments(int argc, char* argv[]) {
+   if(verboseMode) { 
+      delete verboseMode;
+   }; 
+
+   if(shortMessageMode) { 
+      delete shortMessageMode;
+   };  
 
    verboseMode      = NULL;
    shortMessageMode = NULL;
    
-   for(int count = 1; count < argc; count++)
-      {
-      if(string(argv[count]) == "-v") { verboseMode      = new MyBooleanClass(true); };
-      if(string(argv[count]) == "-s") { shortMessageMode = new MyBooleanClass(true); };
+   for(int count = 1; count < argc; count++) {
+      if(string(argv[count]) == "-v") { 
+         verboseMode = new MyBooleanClass(true); 
       };
-   
-   if(!verboseMode)                    { verboseMode      = new MyBooleanClass();     };  // default is false
-   if(!shortMessageMode)               { shortMessageMode = new MyBooleanClass();     };  // default is false
-   }
+
+      if(string(argv[count]) == "-s") { 
+         shortMessageMode = new MyBooleanClass(true); 
+      };
+   };
+   if(!verboseMode) { 
+      verboseMode = new MyBooleanClass();     
+   };  // default is false
+
+   if(!shortMessageMode)               { 
+      shortMessageMode = new MyBooleanClass();     
+   };  // default is false
+}
 
 /* fim de arquivo */
