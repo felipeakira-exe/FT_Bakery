@@ -20,6 +20,7 @@
 #include "a02ex03_e.hpp"
 #include "Cheese.hpp"
 #include "CottageCheese.hpp"
+#include "Ham.hpp"
 
 /* DANGER: A LOT OF GLOBAL VARIABLES !!! (OBJECTS & STRUCTURES) */
 
@@ -155,7 +156,7 @@ void insertItems() {
             case 3: { insertCottageCheese(); }; break;
             case 4: { insertCracker();       }; break;
             case 5: { insertFilledWafer();   }; break;
-            case 6: {                        }; break;
+            case 6: { insertHam();           }; break;
             case 7: {                        }; break;
          };
       };
@@ -259,7 +260,24 @@ void insertFilledWafer() {
    
    cout << endl << filledWafer->getDescricao() << " - US$ " << fixed << setprecision(2) << filledWafer->getValor() << endl;   
 };
-  
+
+void insertHam() {
+   Ham * ham;
+   string buffer;
+   float weight;
+   double cost;
+
+   cout << "------------------------------\nInsert Ham:\n------------------------------\n";
+   cout << "Weight ....: "; getline(cin, buffer); weight = stof(buffer);
+   cout << "Cost ......: "; getline(cin, buffer); cost   = stod(buffer);
+   cin.clear();
+   
+   ham = new Ham(weight,cost);
+   myMainList.insert(myMainList.end(), ham);
+   
+   cout << endl << ham->getDescricao() << " - US$ " << fixed << setprecision(2) << ham->getValor() << endl;   
+
+}
 void verifyArguments(int argc, char* argv[]) {
    if(verboseMode) { 
       delete verboseMode;

@@ -21,7 +21,7 @@ using namespace std;
    void insertCottageCheese(void);
    void insertCracker(void);
    void insertFilledWafer(void);
-   
+   void insertHam(void);
    
 #endif
 

@@ -1,7 +1,7 @@
 #include <string>
-#include "a02ex03_b.hpp"
-#include "Cheese.hpp"
-#include "CottageCheese.hpp"
+#include "a02ex03_b.hpp"       // Classe Food
+#include "Cheese.hpp"          // Classe Cheese
+#include "CottageCheese.hpp"   //Arquivo HPP
 
 using namespace std;
 

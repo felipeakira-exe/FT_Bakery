@@ -1,5 +1,5 @@
 #ifndef COTTAGE_CHESSE_H
-    #define COTTAGE_CHEESE_H
+#define COTTAGE_CHEESE_H
 
 #include <string>
 #include "a02ex03_b.hpp" // Classe Food
