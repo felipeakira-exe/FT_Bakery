@@ -108,24 +108,26 @@ void process() {
    };
 };
 
-void clearAll()   // está errada ! corrigir !!!!
+void clearAll()
    {
-   myMainList.clear();
-
    vector<Food *>::iterator scan = myMainList.begin();
    
    while(scan != myMainList.end())
-      {
+   {
       delete (*scan);
-      *scan - NULL;
+      // exclusao da linha *scan - NULL
       scan++;
-      };
+   };
+
+   myMainList.clear(); 
+   // mudança de posição do comando clear para depois de deletar os elementos
 
    delete verboseMode;
    delete shortMessageMode;
+
    verboseMode = NULL;
    shortMessageMode = NULL;
-   };
+};
 
 void listItems() {
    double total = 0.00;
