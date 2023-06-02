@@ -22,7 +22,7 @@ using namespace std;
    void insertCracker(void);
    void insertFilledWafer(void);
    void insertHam(void);
-   
+   void insertMortadella(void);
 #endif
 
 /* fim de arquivo */
